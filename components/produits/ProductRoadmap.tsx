@@ -129,7 +129,7 @@ export default function ProductRoadmap() {
 
             <div>
               <p className="text-xs font-bold text-slate-700">
-                T2 2026
+                T2 2030
               </p>
 
               <p className="text-[11px] text-slate-400">
@@ -146,7 +146,7 @@ export default function ProductRoadmap() {
               </p>
 
               <p className="mt-3 text-xs font-bold text-slate-700">
-                T3 2026
+                T3 2030
               </p>
 
               <p className="text-[11px] text-slate-400">
@@ -158,7 +158,7 @@ export default function ProductRoadmap() {
             <div>
 
               <p className="text-xs font-bold text-slate-700">
-                T4 2026
+                T4 2030
               </p>
 
               <p className="text-[11px] text-slate-400">
