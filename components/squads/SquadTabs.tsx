@@ -1,3 +1,4 @@
+// SquadTabs.tsx
 import {
   LayoutGrid,
   CalendarDays,
@@ -8,7 +9,7 @@ import {
 } from "lucide-react";
 
 const tabs = [
-  { label: "Vue d’ensemble", icon: LayoutGrid },
+  { label: "Vue d'ensemble", icon: LayoutGrid },
   { label: "Planning Sprint", icon: CalendarDays },
   { label: "Backlog", icon: ClipboardList },
   { label: "Capacité Équipe", icon: Users },
@@ -27,9 +28,9 @@ export default function SquadTabs() {
           return (
             <button
               key={tab.label}
-              className={`relative flex items-center gap-2 pb-4 pt-3 text-sm font-bold transition ${
+              className={`relative flex items-center gap-2 pb-3 pt-2.5 text-sm font-bold transition ${
                 active
-                  ? "text-blue-600"
+                  ? "text-[#3D6FC9]"
                   : "text-slate-500 hover:text-slate-800"
               }`}
             >
@@ -37,7 +38,7 @@ export default function SquadTabs() {
               <span>{tab.label}</span>
 
               {active && (
-                <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-blue-500" />
+                <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-[#7CA8E8]" />
               )}
             </button>
           );

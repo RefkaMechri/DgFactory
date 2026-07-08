@@ -1,3 +1,4 @@
+// page.tsx
 import { Plus } from "lucide-react";
 
 import SquadCards from "@/components/squads/SquadCards";
@@ -12,7 +13,7 @@ import TeamCapacity from "@/components/squads/TeamCapacity";
 export default function SquadsPage() {
   return (
     <div className="min-w-0 overflow-x-hidden bg-slate-50">
-      <div className="origin-top-left w-[138.8%] scale-[0.72] space-y-4">
+      <div className="origin-top-left w-[138.8%] scale-[0.72] space-y-3">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-orange-500">
@@ -38,7 +39,7 @@ export default function SquadsPage() {
 
         <SquadTabs />
 
-        <div className="grid min-w-0 grid-cols-1 gap-4 xl:grid-cols-12">
+        <div className="grid min-w-0 grid-cols-1 gap-3 xl:grid-cols-12 xl:items-stretch">
           <div className="min-w-0 xl:col-span-7">
             <BurndownChart />
           </div>

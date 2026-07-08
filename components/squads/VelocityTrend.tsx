@@ -1,3 +1,4 @@
+// VelocityTrend.tsx
 "use client";
 
 import { velocityData } from "@/data/squads";
@@ -14,18 +15,18 @@ import {
 
 export default function VelocityTrend() {
   return (
-    <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm">
-      <div className="mb-5 flex items-center justify-between">
+    <div className="h-full rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
+      <div className="mb-3 flex items-center justify-between">
         <h2 className="text-base font-bold text-slate-900">
           Velocity Trend
         </h2>
 
-        <p className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-600">
+        <p className="rounded-full bg-[#E4EEFC] px-3 py-1 text-xs font-bold text-[#3D6FC9]">
           Moyenne 40 pts
         </p>
       </div>
 
-      <div className="h-[260px]">
+      <div className="h-[230px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={velocityData}>
             <CartesianGrid
@@ -57,7 +58,7 @@ export default function VelocityTrend() {
 
             <Bar
               dataKey="points"
-              fill="#60a5fa"
+              fill="#7CA8E8"
               radius={[10, 10, 0, 0]}
               barSize={36}
             />

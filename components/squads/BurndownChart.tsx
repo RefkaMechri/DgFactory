@@ -1,3 +1,4 @@
+// BurndownChart.tsx
 "use client";
 
 import { burndownData } from "@/data/squads";
@@ -14,8 +15,8 @@ import {
 
 export default function BurndownChart() {
   return (
-    <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm">
-      <div className="mb-5 flex items-center justify-between">
+    <div className="h-full rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
+      <div className="mb-3 flex items-center justify-between">
         <h2 className="text-base font-bold text-slate-900">
           Burndown Chart — Sprint 23 (Squad Mobile Banking)
         </h2>
@@ -25,8 +26,8 @@ export default function BurndownChart() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1fr_120px]">
-        <div className="h-[260px]">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_110px]">
+        <div className="h-[230px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={burndownData}>
               <CartesianGrid
@@ -59,7 +60,7 @@ export default function BurndownChart() {
               <Line
                 type="monotone"
                 dataKey="remaining"
-                stroke="#3b82f6"
+                stroke="#7CA8E8"
                 strokeWidth={3}
                 dot={{ r: 3 }}
               />
@@ -67,7 +68,7 @@ export default function BurndownChart() {
               <Line
                 type="monotone"
                 dataKey="objective"
-                stroke="#cbd5e1"
+                stroke="#D7DCE3"
                 strokeWidth={2}
                 strokeDasharray="5 5"
                 dot={false}
@@ -76,31 +77,31 @@ export default function BurndownChart() {
           </ResponsiveContainer>
         </div>
 
-        <div className="space-y-4 text-sm">
+        <div className="space-y-3 text-sm">
           <div>
             <p className="text-xs font-semibold text-slate-400">
               Travail initial
             </p>
-            <p className="text-xl font-black text-slate-900">100 pts</p>
+            <p className="text-lg font-black text-[#1E2433]">100 pts</p>
           </div>
 
           <div>
             <p className="text-xs font-semibold text-slate-400">
               Travail restant
             </p>
-            <p className="text-xl font-black text-slate-900">28 pts</p>
+            <p className="text-lg font-black text-[#1E2433]">28 pts</p>
           </div>
 
           <div>
             <p className="text-xs font-semibold text-slate-400">Terminé</p>
-            <p className="text-xl font-black text-emerald-500">72%</p>
+            <p className="text-lg font-black text-[#2F9C5E]">72%</p>
           </div>
 
           <div>
             <p className="text-xs font-semibold text-slate-400">
               Jours restants
             </p>
-            <p className="text-xl font-black text-slate-900">3</p>
+            <p className="text-lg font-black text-[#1E2433]">3</p>
           </div>
         </div>
       </div>
