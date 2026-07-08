@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import type { ReactNode } from "react";
 
 type MenuItem = {
@@ -113,7 +114,6 @@ const menuGroups: MenuGroup[] = [
           </svg>
         ),
       },
-
       {
         title: "Centre d'Alertes",
         href: "/dashboard/alertes",
@@ -130,37 +130,68 @@ const menuGroups: MenuGroup[] = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(true);
 
   return (
-    <aside className="relative w-72 h-screen flex flex-col bg-gradient-to-b from-[#0A1730] to-[#060E22] text-white overflow-hidden">
-      {/* brand signature: thin vertical gradient rail */}
+    <aside
+      className={`relative h-screen flex flex-col bg-gradient-to-b from-[#0A1730] to-[#060E22] text-white overflow-visible transition-all duration-300 ${
+        open ? "w-72" : "w-20"
+      }`}
+    >
       <div className="absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#F2622E] via-[#F2622E]/40 to-[#2FBFAE]" />
 
-      {/* logo */}
-      <div className="px-7 pt-8 pb-6 border-b border-white/[0.06]">
-        <h1 className="text-[#F2622E] font-extrabold text-lg tracking-tight leading-none">
-          YK DIGITAL
-        </h1>
-        <p className="text-[11px] text-[#7C86B3] mt-1.5 tracking-wide">
-          Digital Factory
-        </p>
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className="absolute top-6 -right-4 z-30 h-8 w-8 rounded-full bg-[#F2622E] text-white shadow-lg flex items-center justify-center hover:bg-[#E0501F] transition"
+      >
+        <svg
+          className={`transition-transform duration-300 ${open ? "" : "rotate-180"}`}
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      <div className={`${open ? "px-7" : "px-3 text-center"} pt-8 pb-6 border-b border-white/[0.06]`}>
+        {open ? (
+          <>
+            <h1 className="text-[#F2622E] font-extrabold text-lg tracking-tight leading-none">
+              YK DIGITAL
+            </h1>
+            <p className="text-[11px] text-[#7C86B3] mt-1.5 tracking-wide">
+              Digital Factory
+            </p>
+          </>
+        ) : (
+          <h1 className="text-[#F2622E] font-extrabold text-lg">YK</h1>
+        )}
       </div>
 
-      {/* nav */}
       <nav className="yaqeen-nav-scroll flex-1 overflow-y-auto px-4 py-5 space-y-6">
         {menuGroups.map((group) => (
           <div key={group.label}>
-            <p className="px-3 mb-2 text-[10.5px] font-semibold tracking-[0.12em] text-[#4C5680]">
-              {group.label}
-            </p>
+            {open && (
+              <p className="px-3 mb-2 text-[10.5px] font-semibold tracking-[0.12em] text-[#4C5680]">
+                {group.label}
+              </p>
+            )}
+
             <div className="space-y-1">
               {group.items.map((item) => {
                 const active = pathname === item.href;
+
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13.5px] font-medium transition-all duration-200 ${
+                    title={!open ? item.title : undefined}
+                    className={`group relative flex items-center rounded-xl py-2.5 text-[13.5px] font-medium transition-all duration-200 ${
+                      open ? "gap-3 px-3" : "justify-center px-0"
+                    } ${
                       active
                         ? "bg-gradient-to-r from-[#F2622E] to-[#E0501F] text-white shadow-[0_6px_18px_-6px_rgba(242,98,46,0.55)]"
                         : "text-[#A6ADD1] hover:bg-white/[0.05] hover:text-white"
@@ -169,8 +200,10 @@ export default function Sidebar() {
                     <span className="flex items-center justify-center shrink-0">
                       {item.icon(active)}
                     </span>
-                    <span className="truncate">{item.title}</span>
-                    {active && (
+
+                    {open && <span className="truncate">{item.title}</span>}
+
+                    {open && active && (
                       <span className="ml-auto h-1.5 w-1.5 rounded-full bg-white/80" />
                     )}
                   </Link>
@@ -181,30 +214,44 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      {/* profile footer */}
       <div className="border-t border-white/[0.06] p-4">
-        <div className="flex items-center gap-3 rounded-xl px-2 py-2.5 hover:bg-white/[0.05] transition cursor-pointer">
+        <div
+          className={`flex items-center rounded-xl py-2.5 hover:bg-white/[0.05] transition cursor-pointer ${
+            open ? "gap-3 px-2" : "justify-center px-0"
+          }`}
+        >
           <div className="relative shrink-0">
             <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#F2622E] to-[#2FBFAE] flex items-center justify-center text-white text-sm font-bold">
               IH
             </div>
             <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-[#4ade80] border-2 border-[#0A1730]" />
           </div>
-          <div className="min-w-0">
-            <p className="text-sm font-semibold text-white truncate">Imen Hamdi</p>
-            <p className="text-[11.5px] text-[#7C86B3] truncate">Digital Factory Director</p>
-          </div>
-          <svg
-            className="ml-auto shrink-0 text-[#7C86B3]"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+
+          {open && (
+            <>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-white truncate">
+                  Imen Hamdi
+                </p>
+                <p className="text-[11.5px] text-[#7C86B3] truncate">
+                  Digital Factory Director
+                </p>
+              </div>
+
+              <svg
+                className="ml-auto shrink-0 text-[#7C86B3]"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </>
+          )}
         </div>
       </div>
+
       <style jsx global>{`
         .yaqeen-nav-scroll {
           scrollbar-width: thin;
