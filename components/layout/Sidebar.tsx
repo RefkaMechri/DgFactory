@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import type { ReactNode } from "react";
 
@@ -130,7 +130,14 @@ const menuGroups: MenuGroup[] = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
   const [open, setOpen] = useState(true);
+  const [showLogout, setShowLogout] = useState(false);
+
+  const handleLogout = () => {
+    router.push("/");
+  };
 
   return (
     <aside
@@ -142,7 +149,10 @@ export default function Sidebar() {
 
       <button
         type="button"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => {
+          setOpen((prev) => !prev);
+          setShowLogout(false);
+        }}
         className="absolute top-6 -right-4 z-30 h-8 w-8 rounded-full bg-[#F2622E] text-white shadow-lg flex items-center justify-center hover:bg-[#E0501F] transition"
       >
         <svg
@@ -214,9 +224,9 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="border-t border-white/[0.06] p-4">
+      <div className="relative border-t border-white/[0.06] p-4">
         <div
-          className={`flex items-center rounded-xl py-2.5 hover:bg-white/[0.05] transition cursor-pointer ${
+          className={`flex items-center rounded-xl py-2.5 hover:bg-white/[0.05] transition ${
             open ? "gap-3 px-2" : "justify-center px-0"
           }`}
         >
@@ -238,18 +248,36 @@ export default function Sidebar() {
                 </p>
               </div>
 
-              <svg
-                className="ml-auto shrink-0 text-[#7C86B3]"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
+              <button
+                type="button"
+                onClick={() => setShowLogout((prev) => !prev)}
+                className="ml-auto shrink-0 text-[#7C86B3] hover:text-white transition"
               >
-                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+                <svg
+                  className={`transition-transform duration-200 ${
+                    showLogout ? "rotate-90" : ""
+                  }`}
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
             </>
           )}
         </div>
+
+        {open && showLogout && (
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="mt-2 w-full rounded-xl px-3 py-2 text-left text-[13px] font-medium text-[#A6ADD1] hover:bg-white/[0.05] hover:text-white transition"
+          >
+            Se déconnecter
+          </button>
+        )}
       </div>
 
       <style jsx global>{`
