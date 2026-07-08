@@ -46,7 +46,7 @@ export default function ProductBacklog() {
         <h2 className="text-lg font-bold text-slate-900">Backlog Summary</h2>
 
         <div className="mt-7 flex flex-col items-center gap-7 md:flex-row">
-          <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-[conic-gradient(#60a5fa_0_41%,#34d399_41%_71%,#fbbf24_71%_88%,#fb7185_88%_95%,#cbd5e1_95%_100%)]">
+          <div className="relative flex h-44 w-44 shrink-0 items-center justify-center rounded-full bg-[conic-gradient(#60a5fa_0_41%,#34d399_41%_71%,#fbbf24_71%_88%,#fb7185_88%_95%,#cbd5e1_95%_100%)]">
             <div className="absolute inset-3 rounded-full bg-white" />
 
             <div className="relative flex h-24 w-24 flex-col items-center justify-center rounded-full bg-white shadow-[inset_0_0_0_1px_rgba(226,232,240,0.8)]">

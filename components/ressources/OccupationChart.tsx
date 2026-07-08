@@ -1,3 +1,4 @@
+// OccupationChart.tsx
 "use client";
 
 import { occupationData } from "@/data/resources";
@@ -14,12 +15,12 @@ import {
 
 export default function OccupationChart() {
   return (
-    <div className="rounded-3xl border border-slate-100 bg-white p-5 shadow-sm">
-      <h2 className="mb-5 text-base font-bold text-slate-900">
-        Taux d’Occupation par Département
+    <div className="h-full rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
+      <h2 className="mb-3 text-base font-bold text-slate-900">
+        Taux d&rsquo;Occupation par Département
       </h2>
 
-      <div className="h-[280px]">
+      <div className="h-[260px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={occupationData}>
             <CartesianGrid
@@ -53,19 +54,19 @@ export default function OccupationChart() {
 
             <ReferenceLine
               y={80}
-              stroke="#f59e0b"
+              stroke="#E0A854"
               strokeDasharray="5 5"
               label={{
                 value: "Objectif 80%",
                 position: "insideTopRight",
-                fill: "#f59e0b",
+                fill: "#B8790A",
                 fontSize: 11,
               }}
             />
 
             <Bar
               dataKey="occupation"
-              fill="#2563eb"
+              fill="#7CA8E8"
               radius={[10, 10, 0, 0]}
               barSize={42}
             />

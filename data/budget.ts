@@ -1,0 +1,291 @@
+import {
+  Wallet,
+  PieChart,
+  CreditCard,
+  TrendingUp,
+  Code2,
+  Database,
+  ShieldCheck,
+  Users,
+  Server,
+  MoreHorizontal,
+} from "lucide-react";
+
+export const budgetStats = [
+  {
+    label: "Budget Total",
+    value: "5 035 k€",
+    main: "100% de l'enveloppe",
+    trend: "stable",
+    subTrend: "true",
+    progress: 100,
+    icon: Wallet,
+    color: "blue",
+  },
+  {
+    label: "Budget Consommé",
+    value: "3 248 k€",
+    main: "64,5% consommé",
+    trend: "+4,3%",
+    subTrend: "",
+    progress: 64.5,
+    icon: PieChart,
+    color: "orange",
+  },
+  {
+    label: "Budget Restant",
+    value: "1 787 k€",
+    main: "35,5% disponible",
+    trend: "-4,3%",
+    subTrend: "true",
+    progress: 35.5,
+    icon: CreditCard,
+    color: "emerald",
+  },
+  {
+    label: "Prévision Fin d’Année",
+    value: "5 280 k€",
+    main: "104,9% – dépassement",
+    trend: "+4,9%",
+    subTrend: "",
+    progress: 104.9,
+    icon: TrendingUp,
+    color: "violet",
+  },
+];
+
+export const budgetAlerts = [
+  {
+    domain: "Développement",
+    detail: "Écart budget: +8,3%",
+    badge: "+8,3%",
+    level: "Critique",
+  },
+  {
+    domain: "Sécurité",
+    detail: "Écart budget: -24%",
+    badge: "-24%",
+    level: "Élevé",
+  },
+  {
+    domain: "Infrastructure",
+    detail: "Écart budget: -15%",
+    badge: "-15%",
+    level: "Moyen",
+  },
+];
+
+export const budgetConsumption = [
+  { month: "Jan", planned: 320, real: 250 },
+  { month: "Fév", planned: 650, real: 620 },
+  { month: "Mar", planned: 1050, real: 980 },
+  { month: "Avr", planned: 1600, real: 1450 },
+  { month: "Mai", planned: 2100, real: 1900 },
+  { month: "Juin", planned: 2600, real: 2300 },
+  { month: "Juil", planned: 3100, real: 2700 },
+  { month: "Aoû", planned: 3500, real: 3050 },
+  { month: "Sep", planned: 3900, real: 3400 },
+  { month: "Oct", planned: 4300, real: 3700 },
+  { month: "Nov", planned: 4700, real: 4000 },
+  { month: "Déc", planned: 5035, real: 4320 },
+];
+
+export const budgetByDomain = [
+  {
+    domain: "Parcours Client & Onboarding",
+    planned: 1400,
+    real: 1060,
+    gap: -340,
+    gapPercent: "-24%",
+    execution: 76,
+    color: "#0f73ff",
+  },
+  {
+    domain: "Core Banking & Intégration",
+    planned: 1260,
+    real: 955,
+    gap: -305,
+    gapPercent: "-24%",
+    execution: 76,
+    color: "#3b82f6",
+  },
+  {
+    domain: "Data & IA",
+    planned: 1520,
+    real: 1150,
+    gap: -370,
+    gapPercent: "-24%",
+    execution: 76,
+    color: "#10b981",
+  },
+  {
+    domain: "Sécurité & Conformité",
+    planned: 1030,
+    real: 780,
+    gap: -250,
+    gapPercent: "-24%",
+    execution: 76,
+    color: "#ef4444",
+  },
+  {
+    domain: "Infrastructure & DevOps",
+    planned: 1035,
+    real: 775,
+    gap: -260,
+    gapPercent: "-25%",
+    execution: 75,
+    color: "#f59e0b",
+  },
+  {
+    domain: "Innovation & Expérimentation",
+    planned: 790,
+    real: 315,
+    gap: -475,
+    gapPercent: "-60%",
+    execution: 40,
+    color: "#94a3b8",
+  },
+];
+
+export const budgetCostTypes = [
+  {
+    type: "Ressources Humaines",
+    amount: 1800,
+    percent: "55,5%",
+    color: "#2563eb",
+  },
+  {
+    type: "Sous-traitance",
+    amount: 650,
+    percent: "20,0%",
+    color: "#f97316",
+  },
+  {
+    type: "Outils & Licences",
+    amount: 310,
+    percent: "10,0%",
+    color: "#10b981",
+  },
+  {
+    type: "Infrastructure Cloud",
+    amount: 225,
+    percent: "6,9%",
+    color: "#8b5cf6",
+  },
+  {
+    type: "Autres",
+    amount: 263,
+    percent: "7,6%",
+    color: "#cbd5e1",
+  },
+];
+
+export const budgetDetails = [
+  {
+    domain: "Parcours Client & Onboarding",
+    planned: "1 400",
+    real: "1 060",
+    gap: "-340",
+    gapPercent: "-24%",
+    execution: 76,
+    trend: "↘",
+    color: "bg-blue-500",
+    icon: Users,
+  },
+  {
+    domain: "Core Banking & Intégration",
+    planned: "1 260",
+    real: "955",
+    gap: "-305",
+    gapPercent: "-24%",
+    execution: 76,
+    trend: "↘",
+    color: "bg-blue-400",
+    icon: Code2,
+  },
+  {
+    domain: "Data & IA",
+    planned: "1 520",
+    real: "1 150",
+    gap: "-370",
+    gapPercent: "-24%",
+    execution: 76,
+    trend: "↘",
+    color: "bg-emerald-500",
+    icon: Database,
+  },
+  {
+    domain: "Sécurité & Conformité",
+    planned: "1 030",
+    real: "780",
+    gap: "-250",
+    gapPercent: "-24%",
+    execution: 76,
+    trend: "↘",
+    color: "bg-rose-500",
+    icon: ShieldCheck,
+  },
+  {
+    domain: "Infrastructure & DevOps",
+    planned: "1 035",
+    real: "775",
+    gap: "-260",
+    gapPercent: "-25%",
+    execution: 75,
+    trend: "↘",
+    color: "bg-amber-500",
+    icon: Server,
+  },
+  {
+    domain: "Innovation & Expérimentation",
+    planned: "790",
+    real: "315",
+    gap: "-475",
+    gapPercent: "-60%",
+    execution: 40,
+    trend: "↘",
+    color: "bg-slate-400",
+    icon: MoreHorizontal,
+  },
+];
+
+export const financialAnalysis = [
+  {
+    label: "Taux d'exécution budgétaire",
+    detail: "+4,3%",
+    value: "64,5%",
+    color: "text-emerald-500",
+  },
+  {
+    label: "Indice de Performance Budgétaire (IPB)",
+    detail: "-0,08",
+    value: "0,92",
+    color: "text-rose-500",
+  },
+  {
+    label: "Écart global",
+    detail: "35,5% restant",
+    value: "-1 787 k€",
+    color: "text-blue-500",
+  },
+  {
+    label: "Coût moyen par produit digital",
+    detail: "/5 produits",
+    value: "201 k€",
+    color: "text-blue-400",
+  },
+];
+
+export const forecastSummary = [
+  { label: "Prévision fin d'année", value: "5 280 k€" },
+  { label: "Budget total alloué", value: "5 035 k€" },
+  { label: "Écart prévisionnel", value: "+245 k€" },
+  { label: "Taux d'exéc. prévisionnel", value: "104,9%" },
+];
+
+export const forecastChart = [
+  { month: "Jan", forecast: 250, budget: 320 },
+  { month: "Avr", forecast: 1450, budget: 1600 },
+  { month: "Mai", forecast: 1900, budget: 2100 },
+  { month: "Déc Prévu", forecast: 5280, budget: 5035 },
+];

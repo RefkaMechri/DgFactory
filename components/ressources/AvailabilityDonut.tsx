@@ -8,7 +8,7 @@ export default function AvailabilityDonut() {
       </h2>
 
       <div className="flex flex-col items-center gap-6 md:flex-row">
-        <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-[conic-gradient(#34d399_0_17%,#3b82f6_17%_84%,#f59e0b_84%_91%,#8b5cf6_91%_96%,#cbd5e1_96%_100%)]">
+        <div className="relative flex h-44 w-44 shrink-0 items-center justify-center rounded-full bg-[conic-gradient(#34d399_0_17%,#3b82f6_17%_84%,#f59e0b_84%_91%,#8b5cf6_91%_96%,#cbd5e1_96%_100%)]">
           <div className="absolute inset-4 rounded-full bg-white" />
 
           <div className="relative text-center">
