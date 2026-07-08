@@ -24,7 +24,7 @@ export default function DonutChart({ data, centerValue, centerLabel, valueSuffix
               ))}
             </Pie>
             <Tooltip
-              formatter={(value: number, name: string) => [`${value}${valueSuffix}`, name]}
+             formatter={(value, name) => [`${value ?? 0}${valueSuffix}`, String(name)]}
               contentStyle={{ borderRadius: 12, border: "1px solid #E7E8F0", fontSize: 11, boxShadow: "0 12px 30px rgba(15,23,42,.08)" }}
             />
           </PieChart>
