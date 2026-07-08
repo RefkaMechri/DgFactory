@@ -22,7 +22,7 @@ export default function BudgetConsumptionChart() {
         </h2>
 
         <button className="rounded-lg bg-[#FFE4D2] px-3 py-1.5 text-xs font-bold text-[#B9501F]">
-          Jan – Déc 2026
+          Jan – Déc 2030
         </button>
       </div>
 

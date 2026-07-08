@@ -136,7 +136,7 @@ export const alertHistory = [
     source: "Finance",
     status: "Ouverte",
     assignedTo: "Ahmed Triki",
-    date: "18/05/2026 10:24",
+    date: "18/05/2030 10:24",
   },
   {
     id: "ALT-060",
@@ -146,7 +146,7 @@ export const alertHistory = [
     source: "Jira",
     status: "Ouverte",
     assignedTo: "Yassine Amine",
-    date: "18/05/2026 09:15",
+    date: "18/05/2030 09:15",
   },
   {
     id: "ALT-059",
@@ -156,7 +156,7 @@ export const alertHistory = [
     source: "HR System",
     status: "Ouverte",
     assignedTo: "Sara Dridi",
-    date: "17/05/2026 14:30",
+    date: "17/05/2030 14:30",
   },
   {
     id: "ALT-058",
@@ -166,7 +166,7 @@ export const alertHistory = [
     source: "Security",
     status: "En cours",
     assignedTo: "Mehdi Baccar",
-    date: "17/05/2026 08:00",
+    date: "17/05/2030 08:00",
   },
   {
     id: "ALT-057",
@@ -176,7 +176,7 @@ export const alertHistory = [
     source: "KPI Monitor",
     status: "En cours",
     assignedTo: "Ines Zouari",
-    date: "16/05/2026 19:20",
+    date: "16/05/2030 19:20",
   },
   {
     id: "ALT-056",
@@ -186,7 +186,7 @@ export const alertHistory = [
     source: "Finance",
     status: "Résolu",
     assignedTo: "Omar Messaoud",
-    date: "16/05/2026 10:05",
+    date: "16/05/2030 10:05",
   },
   {
     id: "ALT-055",
@@ -196,7 +196,7 @@ export const alertHistory = [
     source: "Jira",
     status: "Résolu",
     assignedTo: "Karim Aït",
-    date: "15/05/2026 16:45",
+    date: "15/05/2030 16:45",
   },
   {
     id: "ALT-054",
@@ -206,7 +206,7 @@ export const alertHistory = [
     source: "Compliance",
     status: "Résolu",
     assignedTo: "Ahmed Triki",
-    date: "15/05/2026 09:20",
+    date: "15/05/2030 09:20",
   },
 ];
 
@@ -231,8 +231,8 @@ export const selectedAlert = {
     "Le budget consommé (12,4 M MAD) dépasse le budget prévu (11,0 M MAD) de 12%.",
   severity: "Critique",
   source: "Finance",
-  detectedAt: "18/05/2026 10:24",
+  detectedAt: "18/05/2030 10:24",
   assignedTo: "Ahmed Triki",
-  dueDate: "20/05/2026",
+  dueDate: "20/05/2030",
   status: "Ouverte",
 };

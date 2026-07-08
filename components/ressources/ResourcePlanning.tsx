@@ -18,7 +18,7 @@ export default function ResourcePlanning() {
             Planning des Ressources
           </h2>
           <p className="text-xs font-semibold text-slate-400">
-            Semaine 20 - Mai 2026
+            Semaine 20 - Mai 2030
           </p>
         </div>
 

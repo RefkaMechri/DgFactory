@@ -1,12 +1,81 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
 type HeaderProps = {
   title?: string;
   eyebrow?: string;
 };
 
-export default function Header({
-}: HeaderProps) {
+type AlertItem = {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+  severity: "critique" | "eleve" | "moyen";
+  read: boolean;
+};
+
+const severityStyles: Record<AlertItem["severity"], string> = {
+  critique: "bg-[#FCE4E7] text-[#D1435A]",
+  eleve: "bg-[#FFE8D2] text-[#C9711F]",
+  moyen: "bg-[#FFF3D0] text-[#B8790A]",
+};
+
+const severityLabels: Record<AlertItem["severity"], string> = {
+  critique: "Critique",
+  eleve: "Élevé",
+  moyen: "Moyen",
+};
+
+// TODO: remplacer par tes vraies données (ex: import { recentNotifications } from "@/data/alerts")
+const mockAlerts: AlertItem[] = [
+  {
+    id: "1",
+    title: "Dépassement budgétaire",
+    description: "Domaine Innovation & Expérimentation à -60% d'écart",
+    time: "Il y a 12 min",
+    severity: "critique",
+    read: false,
+  },
+  {
+    id: "2",
+    title: "Surcharge ressource",
+    description: "Ahmed Triki à 100% sur 4 jours consécutifs",
+    time: "Il y a 1h",
+    severity: "eleve",
+    read: false,
+  },
+  {
+    id: "3",
+    title: "Sprint à risque",
+    description: "Squad Mobile Banking : vélocité en baisse de 15%",
+    time: "Il y a 3h",
+    severity: "moyen",
+    read: true,
+  },
+];
+
+export default function Header({}: HeaderProps) {
+  const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  const unreadCount = mockAlerts.filter((a) => !a.read).length;
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (panelRef.current && !panelRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-10 h-20 bg-white/80 backdrop-blur-md border-b border-slate-200/80 flex items-center justify-between px-8">
       <div>
@@ -51,18 +120,81 @@ export default function Header({
         <div className="h-8 w-px bg-slate-200 mx-1" />
 
         {/* notifications */}
-        <button className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-[#0A1730] transition hover:border-slate-300 hover:bg-slate-50">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M12 4a5.5 5.5 0 00-5.5 5.5c0 4.5-1.5 5.8-2 6.5h15c-.5-.7-2-2-2-6.5A5.5 5.5 0 0012 4z"
-              stroke="currentColor"
-              strokeWidth="1.7"
-              strokeLinejoin="round"
-            />
-            <path d="M10 19a2.2 2.2 0 004 0" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-          </svg>
-          <span className="absolute top-2 right-2.5 h-2 w-2 rounded-full bg-[#F2622E] ring-2 ring-white" />
-        </button>
+        <div className="relative" ref={panelRef}>
+          <button
+            onClick={() => setOpen((prev) => !prev)}
+            className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-[#0A1730] transition hover:border-slate-300 hover:bg-slate-50"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 4a5.5 5.5 0 00-5.5 5.5c0 4.5-1.5 5.8-2 6.5h15c-.5-.7-2-2-2-6.5A5.5 5.5 0 0012 4z"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinejoin="round"
+              />
+              <path d="M10 19a2.2 2.2 0 004 0" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+            {unreadCount > 0 && (
+              <span className="absolute top-2 right-2.5 h-2 w-2 rounded-full bg-[#F2622E] ring-2 ring-white" />
+            )}
+          </button>
+
+          {open && (
+            <div className="absolute right-0 mt-2 w-96 rounded-2xl border border-slate-100 bg-white shadow-lg">
+              <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
+                <h3 className="text-sm font-bold text-[#0A1730]">
+                  Notifications
+                </h3>
+
+                {unreadCount > 0 && (
+                  <span className="rounded-full bg-[#FCE4E7] px-2.5 py-0.5 text-xs font-black text-[#D1435A]">
+                    {unreadCount} non lue{unreadCount > 1 ? "s" : ""}
+                  </span>
+                )}
+              </div>
+
+              <div className="max-h-80 divide-y divide-slate-100 overflow-y-auto">
+                {mockAlerts.length === 0 ? (
+                  <p className="px-4 py-6 text-center text-sm font-semibold text-slate-400">
+                    Aucune alerte pour le moment
+                  </p>
+                ) : (
+                  mockAlerts.map((alert) => (
+                    <button
+                      key={alert.id}
+                      className={`flex w-full items-start gap-3 px-4 py-3 text-left transition hover:bg-slate-50 ${
+                        !alert.read ? "bg-[#FFF9F5]" : ""
+                      }`}
+                    >
+                      <span
+                        className={`mt-0.5 shrink-0 rounded-full px-2 py-0.5 text-[10px] font-black ${severityStyles[alert.severity]}`}
+                      >
+                        {severityLabels[alert.severity]}
+                      </span>
+
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold text-[#0A1730]">
+                          {alert.title}
+                        </p>
+                        <p className="truncate text-xs font-semibold text-slate-400">
+                          {alert.description}
+                        </p>
+                      </div>
+
+                      <span className="shrink-0 text-[11px] font-semibold text-slate-400">
+                        {alert.time}
+                      </span>
+                    </button>
+                  ))
+                )}
+              </div>
+
+              <button className="w-full rounded-b-2xl border-t border-slate-100 px-4 py-3 text-center text-sm font-bold text-[#3D6FC9] hover:bg-slate-50">
+                Voir toutes les alertes →
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* avatar */}
         <button className="flex items-center gap-2 rounded-xl pl-1 pr-2.5 py-1 transition hover:bg-slate-50">

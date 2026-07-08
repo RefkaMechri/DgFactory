@@ -65,7 +65,7 @@ export default function BudgetPage() {
         </div>
 
         <p className="text-center text-xs font-semibold text-[#8B8398]">
-          Données mises à jour le 12 Mai 2026 à 09:30
+          Données mises à jour le 12 Mai 2030 à 09:30
         </p>
       </div>
     </div>

@@ -54,7 +54,7 @@ const rows = [
     phase: "Développement",
     progress: 70,
     next: "Tests Utilisateurs",
-    date: "15/06/2026",
+    date: "15/06/2030",
     color: "bg-blue-400",
   },
   {
@@ -62,7 +62,7 @@ const rows = [
     phase: "Test",
     progress: 40,
     next: "Déploiement",
-    date: "30/06/2026",
+    date: "30/06/2030",
     color: "bg-violet-400",
   },
   {
@@ -70,7 +70,7 @@ const rows = [
     phase: "Déploiement",
     progress: 80,
     next: "Go Live",
-    date: "10/07/2026",
+    date: "10/07/2030",
     color: "bg-cyan-400",
   },
 ];
