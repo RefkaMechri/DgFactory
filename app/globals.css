@@ -116,12 +116,45 @@ a {
   color: white;
 }
 
+.homeActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.languageBtn {
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(234, 106, 31, 0.45);
+  background: rgba(234, 106, 31, 0.08);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.languageBtn:hover {
+  background: rgba(234, 106, 31, 0.18);
+  border-color: var(--yk-orange);
+  color: var(--yk-orange-light);
+}
+
+.languageArrow {
+  font-size: 16px;
+  transform: translateY(-2px);
+}
+
 .openAccountBtn {
-  padding: 14px 24px;
-  border-radius: 10px;
+  padding: 15px 26px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--yk-orange), #d8540f);
   color: white;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
 }
 
@@ -151,13 +184,12 @@ a {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    radial-gradient(
-      ellipse 70% 60% at 50% 35%,
-      rgba(6, 20, 38, 0.1) 0%,
-      rgba(6, 20, 38, 0.65) 65%,
-      rgba(6, 20, 38, 0.98) 100%
-    );
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 35%,
+    rgba(6, 20, 38, 0.1) 0%,
+    rgba(6, 20, 38, 0.65) 65%,
+    rgba(6, 20, 38, 0.98) 100%
+  );
 }
 
 .heroText {
@@ -237,6 +269,15 @@ a {
     display: none;
   }
 
+  .homeActions {
+    gap: 10px;
+  }
+
+  .languageSelect {
+    height: 40px;
+    padding: 0 28px 0 12px;
+  }
+
   .heroSection h1 {
     font-size: 36px;
   }
@@ -244,4 +285,40 @@ a {
   .heroButtons {
     flex-direction: column;
   }
+}
+.languageSelect {
+  height: 42px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.languageSelect option {
+  background: #061426;
+  color: white;
+}
+.aboutActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.aboutLanguageSelect {
+  height: 42px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.aboutLanguageSelect option {
+  background: #061426;
+  color: white;
 }

@@ -426,3 +426,31 @@
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(139, 147, 201, 0.35);
 }
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin-bottom: 28px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 95, 42, 0.45);
+  background: rgba(255, 95, 42, 0.08);
+  color: #ff6b35;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.homeBtn:hover {
+  background: #ff5f2a;
+  color: #ffffff;
+  transform: translateX(-3px);
+  box-shadow: 0 10px 24px rgba(255, 95, 42, 0.25);
+}
+
+.homeIcon {
+  font-size: 18px;
+  line-height: 1;
+}

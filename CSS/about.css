@@ -299,3 +299,24 @@
     font-size: 36px;
   }
 }
+.aboutActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.aboutLanguageSelect {
+  height: 42px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.aboutLanguageSelect option {
+  background: #061426;
+  color: white;
+}

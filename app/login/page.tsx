@@ -8,6 +8,7 @@ type Tab = "login" | "signup";
 
 export default function LoginPage() {
   const router = useRouter();
+
   const [activeTab, setActiveTab] = useState<Tab>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,24 +18,23 @@ export default function LoginPage() {
     router.push("/dashboard");
   };
 
+  const handleHome = () => {
+    router.push("/");
+  };
+
   return (
     <main className={styles.page}>
-      {/* ---------------- LEFT: illustration ---------------- */}
       <section className={styles.illustration}>
         <div className={styles.overlay} />
 
         <div className={styles.brandHeader}>
           <div>
             <p className={styles.brandName}>YK DIGITAL</p>
-            <p className={styles.brandSub}>DIGITAL FACTORY</p>
+            <p className={styles.brandSub}>USINE DIGITALE</p>
           </div>
         </div>
 
-        {/* card + tagline share one flow wrapper so they stack with a fixed
-            gap instead of two independently-positioned absolute blocks */}
         <div className={styles.content}>
-
-
           <div className={styles.tagline}>
             <p className={styles.taglineTitle}>
               Votre transformation bancaire digitale
@@ -42,19 +42,22 @@ export default function LoginPage() {
               <span className={styles.taglineAccent}>commence ici.</span>
             </p>
             <p className={styles.taglineBody}>
-              Pilotez les produits digitaux, suivez les KPIs et accompagnez
-              les squads de YK factory depuis une plateforme moderne et
-              sécurisée.
+              Pilotez les produits digitaux, suivez les KPIs et accompagnez les
+              squads de YK Factory depuis une plateforme moderne et sécurisée.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ---------------- RIGHT: form ---------------- */}
       <section className={styles.formSide}>
         <div className={styles.formWrap}>
-          <h1 className={styles.title}>Welcome Back</h1>
-          <p className={styles.subtitle}>Ready to continue your quest?</p>
+          <button type="button" className={styles.homeBtn} onClick={handleHome}>
+            <span className={styles.homeIcon}>←</span>
+            Retour à l’accueil
+          </button>
+
+          <h1 className={styles.title}>Bon retour parmi nous</h1>
+          <p className={styles.subtitle}>Prêt à continuer votre parcours ?</p>
 
           <div className={styles.tabs}>
             <button
@@ -64,8 +67,9 @@ export default function LoginPage() {
               }`}
               onClick={() => setActiveTab("login")}
             >
-              Login
+              Connexion
             </button>
+
             <button
               type="button"
               className={`${styles.tab} ${
@@ -73,8 +77,9 @@ export default function LoginPage() {
               }`}
               onClick={() => setActiveTab("signup")}
             >
-              Sign Up
+              Inscription
             </button>
+
             <div
               className={`${styles.tabIndicator} ${
                 activeTab === "signup" ? styles.tabIndicatorRight : ""
@@ -84,8 +89,9 @@ export default function LoginPage() {
 
           <div className={styles.field}>
             <div className={styles.label}>
-              <span>Email Address</span>
+              <span>Adresse e-mail</span>
             </div>
+
             <div className={styles.inputBox}>
               <span className={styles.inputIcon}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -106,6 +112,7 @@ export default function LoginPage() {
                   />
                 </svg>
               </span>
+
               <input
                 type="email"
                 placeholder="imen@example.com"
@@ -118,11 +125,13 @@ export default function LoginPage() {
 
           <div className={styles.field}>
             <div className={styles.label}>
-              <span>Password</span>
+              <span>Mot de passe</span>
+
               <a href="/forgot-password" className={styles.forgotLink}>
-                Forgot password?
+                Mot de passe oublié ?
               </a>
             </div>
+
             <div className={styles.inputBox}>
               <span className={styles.inputIcon}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -143,6 +152,7 @@ export default function LoginPage() {
                   />
                 </svg>
               </span>
+
               <input
                 type="password"
                 placeholder="••••••••"
@@ -161,8 +171,9 @@ export default function LoginPage() {
               checked={keepLoggedIn}
               onChange={(e) => setKeepLoggedIn(e.target.checked)}
             />
+
             <label htmlFor="keepLoggedIn" className={styles.checkboxLabel}>
-              Keep me logged in to the realm
+              Rester connecté
             </label>
           </div>
 
@@ -171,12 +182,12 @@ export default function LoginPage() {
             className={styles.submitBtn}
             onClick={handleLogin}
           >
-            Enter World
+            Se connecter
           </button>
 
           <div className={styles.divider}>
             <span className={styles.dividerLine} />
-            <span className={styles.dividerText}>OR CONTINUE WITH</span>
+            <span className={styles.dividerText}>OU CONTINUER AVEC</span>
             <span className={styles.dividerLine} />
           </div>
 

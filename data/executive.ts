@@ -26,7 +26,7 @@ export const executiveStats = [
   },
   {
     label: "Budget Consommé",
-    value: "3 248 k€",
+    value: "3 248 k €",
     trend: "+4,3%",
     detail: "64,5% du total",
     icon: Wallet,
