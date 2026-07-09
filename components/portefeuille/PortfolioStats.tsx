@@ -10,9 +10,9 @@ interface StatDef {
 
 const stats: StatDef[] = [
   { title: "Projets actifs", value: "25", delta: "+5%", icon: Briefcase, gradient: "from-blue-500 to-indigo-500" },
-  { title: "Budget total", value: "4,9 M LYD", delta: "+5%", icon: Wallet, gradient: "from-orange-500 to-rose-500" },
+  { title: "Budget total", value: "5035 K €", delta: "+5%", icon: Wallet, gradient: "from-orange-500 to-rose-500" },
   { title: "Réussite", value: "44%", delta: "+5%", icon: Target, gradient: "from-emerald-500 to-teal-500" },
-  { title: "Valeur générée", value: "12,8 M LYD", delta: "+5%", icon: TrendingUp, gradient: "from-violet-500 to-fuchsia-500" },
+  { title: "Valeur générée", value: "8500 K €", delta: "+5%", icon: TrendingUp, gradient: "from-violet-500 to-fuchsia-500" },
 ];
 
 export default function PortfolioStats() {
