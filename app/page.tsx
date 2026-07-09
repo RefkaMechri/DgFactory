@@ -16,7 +16,7 @@ export default function HomePage() {
 
         <div className="homeLinks">
           <a href="#">Accueil</a>
-          <a href="#">À propos</a>
+          <a href="/about">À propos</a>
           <a href="#">Fonctionnalités</a>
           <a href="#">Ressources</a>
           <a href="#">Contact</a>

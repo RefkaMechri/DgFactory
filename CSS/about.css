@@ -1,0 +1,278 @@
+.aboutPage {
+  min-height: 100vh;
+  padding: 60px;
+  background: #0b1438;
+  color: white;
+}
+
+.aboutNavbar {
+  height: 76px;
+  padding: 0 70px;
+  margin: -60px -60px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 20, 38, 0.95);
+}
+
+.aboutLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aboutLogoMark {
+  font-size: 26px;
+  color: #ea6a1f;
+}
+
+.aboutLogoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.aboutLogoText strong {
+  font-size: 16px;
+  color: #ea6a1f;
+}
+
+.aboutLogoText em {
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8b98ad;
+}
+
+.aboutLinks {
+  display: flex;
+  gap: 34px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.aboutLinks a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.aboutLinks a:hover {
+  color: #f2884a;
+}
+
+.aboutLoginBtn {
+  padding: 14px 24px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ea6a1f, #d8540f);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.aboutHero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.aboutText span {
+  color: #ff6a35;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.aboutText h1 {
+  margin: 18px 0;
+  font-size: 48px;
+  line-height: 1.1;
+}
+
+.aboutText p {
+  color: #b9c6ff;
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+.aboutInfo {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border-left: 4px solid #ff5a2a;
+  color: #dce4ff;
+}
+
+.aboutImage {
+  position: relative;
+  height: 330px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.aboutImage img {
+  object-fit: cover;
+  filter: brightness(0.65);
+}
+
+.aboutStats {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px;
+  border-radius: 18px;
+  background: #111d46;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statIcon,
+.cardIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.statItem strong {
+  display: block;
+  font-size: 28px;
+  color: #ff5a2a;
+}
+
+.statItem p {
+  margin: 4px 0 2px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.statItem small {
+  color: #b9c6ff;
+  font-size: 12px;
+}
+
+.blue {
+  background: rgba(79, 156, 255, 0.14);
+  color: #7db5ff;
+}
+
+.green {
+  background: rgba(25, 163, 91, 0.14);
+  color: #46d982;
+}
+
+.orange {
+  background: rgba(234, 106, 31, 0.16);
+  color: #ff8a55;
+}
+
+.purple {
+  background: rgba(117, 81, 214, 0.16);
+  color: #a78bfa;
+}
+
+.aboutCards {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 22px;
+}
+
+.aboutCard {
+  padding: 28px;
+  border-radius: 18px;
+  background: #111d46;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.aboutCard h3 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.cardContent {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.aboutCard p {
+  margin: 0;
+  color: #b9c6ff;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.valuesRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  text-align: center;
+}
+
+.valuesRow div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.valuesRow strong {
+  margin: 10px 0 6px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.valuesRow p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b9c6ff;
+}
+
+.engagementCard a {
+  display: inline-block;
+  margin-top: 18px;
+  color: #ff5a2a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .aboutHero,
+  .aboutStats,
+  .aboutCards,
+  .valuesRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .aboutPage {
+    padding: 28px;
+  }
+
+  .aboutNavbar {
+    padding: 0 24px;
+    margin: -28px -28px 40px;
+  }
+
+  .aboutLinks {
+    display: none;
+  }
+
+  .aboutText h1 {
+    font-size: 36px;
+  }
+}
