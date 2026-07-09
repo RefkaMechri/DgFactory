@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import heroImage from "../image/homepage.jpg";
 
 export default function HomePage() {
+  const pathname = usePathname();
+
   return (
     <main className="homePage">
       <nav className="homeNavbar">
@@ -15,11 +20,25 @@ export default function HomePage() {
         </div>
 
         <div className="homeLinks">
-          <a href="#">Accueil</a>
-          <a href="/about">À propos</a>
-          <a href="#">Fonctionnalités</a>
-          <a href="#">Ressources</a>
-          <a href="#">Contact</a>
+          <Link href="/" className={pathname === "/" ? "activeLink" : ""}>
+            Accueil
+          </Link>
+
+          <Link href="/about" className={pathname === "/about" ? "activeLink" : ""}>
+            À propos
+          </Link>
+
+          <Link href="#" className="">
+            Fonctionnalités
+          </Link>
+
+          <Link href="#" className="">
+            Ressources
+          </Link>
+
+          <Link href="#" className="">
+            Contact
+          </Link>
         </div>
 
         <div className="homeActions">
@@ -28,7 +47,6 @@ export default function HomePage() {
           </Link>
         </div>
       </nav>
-
       <section className="heroSection">
         <div className="heroBackdrop">
           <Image

@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import heroImage from "../../image/about.jpg";
 import "../../CSS/about.css";
 
 export default function AboutPage() {
+  const pathname = usePathname();
+
   return (
     <main className="aboutPage">
       <nav className="aboutNavbar">
@@ -16,8 +21,14 @@ export default function AboutPage() {
         </div>
 
         <div className="aboutLinks">
-          <Link href="/">Accueil</Link>
-          <Link href="/about">À propos</Link>
+          <Link href="/" className={pathname === "/" ? "activeLink" : ""}>
+            Accueil
+          </Link>
+
+          <Link href="/about" className={pathname === "/about" ? "activeLink" : ""}>
+            À propos
+          </Link>
+
           <a href="#">Fonctionnalités</a>
           <a href="#">Ressources</a>
           <a href="#">Contact</a>

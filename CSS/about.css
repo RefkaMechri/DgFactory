@@ -53,12 +53,35 @@
 }
 
 .aboutLinks a {
+  position: relative;
+  padding-bottom: 6px;
   text-decoration: none;
-  color: inherit;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease;
+}
+
+.aboutLinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #ea6a1f;
+  transition: width 0.3s ease;
 }
 
 .aboutLinks a:hover {
   color: #f2884a;
+}
+
+.aboutLinks a:hover::after,
+.aboutLinks a.activeLink::after {
+  width: 100%;
+}
+
+.aboutLinks a.activeLink {
+  color: white;
 }
 
 .aboutLoginBtn {

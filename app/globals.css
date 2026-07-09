@@ -83,11 +83,37 @@ a {
   display: flex;
   gap: 34px;
   font-size: 14px;
+}
+
+.homeLinks a {
+  position: relative;
+  padding-bottom: 6px;
   color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease;
+}
+
+.homeLinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--yk-orange);
+  transition: width 0.3s ease;
 }
 
 .homeLinks a:hover {
   color: var(--yk-orange-light);
+}
+
+.homeLinks a:hover::after,
+.homeLinks a.activeLink::after {
+  width: 100%;
+}
+
+.homeLinks a.activeLink {
+  color: white;
 }
 
 .openAccountBtn {
