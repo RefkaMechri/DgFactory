@@ -43,17 +43,17 @@ export default function HomePage() {
 
         <div className="heroText">
           <div className="heroBadge">
-            Pilotez vos produits digitaux, du concept au déploiement
+            PILOTER, INNOVER, PERFORMER
           </div>
 
           <h1>
-            Votre transformation <span>bancaire digitale</span> <br />
-            commence ici.
+            Piloter votre <span>innovation</span> <br />
+            Accélérer votre impact
           </h1>
 
           <p>
-            Pilotez les produits digitaux, suivez les KPIs et accompagnez les
-            squads de YK Factory depuis une plateforme moderne et sécurisée.
+            La plateforme de pilotage de la Digital Factory vous offre une vision unifiée 
+            de votre portefeuille digital, de vos équipes agiles et de la performance de vos initiatives.
           </p>
 
           <div className="heroButtons">
