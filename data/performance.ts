@@ -214,8 +214,8 @@ export const trendAnalysis = [
 
 export const financialPerformance = [
   { value: "2,35x", label: "ROI Digital Factory", sub: "ratio retour sur invest.", color: "text-emerald-500" },
-  { value: "120 LYD", label: "Coût/Point de Vélocité", sub: "par point de story", color: "text-blue-500" },
-  { value: "8 500 k€", label: "Valeur Métier Générée", sub: "impact direct", color: "text-blue-400" },
+  { value: "16.4 €", label: "Coût/Point de Vélocité", sub: "par point de story", color: "text-blue-500" },
+  { value: "8 500 k €", label: "Valeur Métier Générée", sub: "impact direct", color: "text-blue-400" },
 ];
 
 export const performanceAlerts = [
