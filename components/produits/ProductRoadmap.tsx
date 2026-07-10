@@ -170,7 +170,7 @@ export default function ProductRoadmap() {
             <div>
 
               <p className="text-xs font-bold text-slate-700">
-                T1 2027
+                T1 2031
               </p>
 
               <p className="text-[11px] text-slate-400">
