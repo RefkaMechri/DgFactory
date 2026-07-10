@@ -136,7 +136,7 @@ export default function Sidebar() {
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
-    router.push("/");
+    router.push("/login");
   };
 
   return (

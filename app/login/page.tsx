@@ -53,7 +53,7 @@ export default function LoginPage() {
         <div className={styles.formWrap}>
           <button type="button" className={styles.homeBtn} onClick={handleHome}>
             <span className={styles.homeIcon}>←</span>
-            Retour à l’accueil
+            Aller à l’accueil
           </button>
 
           <h1 className={styles.title}>Bon retour parmi nous</h1>
