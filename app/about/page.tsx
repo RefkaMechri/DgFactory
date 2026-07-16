@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import heroImage from "../../image/about.jpg";
+import heroImage from "../../image/about2.jpg";
 import "../../CSS/about.css";
 
 type Lang = "FR" | "EN";
@@ -28,7 +28,7 @@ const content = {
       </>
     ),
     description:
-      "La plateforme de pilotage de la Digital Factory a été conçue pour accompagner les organisations bancaires dans la gestion intégrée de leurs initiatives digitales, de l’idée à la mise en production, en favorisant la collaboration, la performance et la maîtrise des risques.",
+      "La plateforme de pilotage de la Digital Factory a été conçue pour accompagner la banque dans la gestion intégrée de leurs initiatives digitales, de l’idée à la mise en production, en favorisant la collaboration, la performance et la maîtrise des risques.",
     info:
       "Une solution centralisée pour aligner la stratégie, les équipes et les ressources autour d’objectifs communs et mesurables.",
     stats: [
