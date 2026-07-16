@@ -1,4 +1,9 @@
 import { Briefcase, Wallet, Target, TrendingUp, ArrowUpRight } from "lucide-react";
+import type { Project } from "@/data/projects";
+
+interface PortfolioStatsProps {
+  projects: Project[];
+}
 
 interface StatDef {
   title: string;
@@ -8,14 +13,23 @@ interface StatDef {
   gradient: string;
 }
 
-const stats: StatDef[] = [
-  { title: "Projets actifs", value: "25", delta: "+5%", icon: Briefcase, gradient: "from-blue-500 to-indigo-500" },
-  { title: "Budget total", value: "5035 K €", delta: "+5%", icon: Wallet, gradient: "from-orange-500 to-rose-500" },
-  { title: "Réussite", value: "44%", delta: "+5%", icon: Target, gradient: "from-emerald-500 to-teal-500" },
-  { title: "Valeur générée", value: "8500 K €", delta: "+5%", icon: TrendingUp, gradient: "from-violet-500 to-fuchsia-500" },
-];
+export default function PortfolioStats({ projects }: PortfolioStatsProps) {
+  const totalBudget = projects.reduce((sum, p) => sum + (Number(p.budget) || 0), 0);
+  const successRate = projects.length
+    ? Math.round((projects.filter((p) => p.progress === 100).length / projects.length) * 100)
+    : 0;
+  const generatedValue = projects.reduce(
+    (sum, p) => sum + ((Number(p.budget) || 0) * p.progress) / 100,
+    0
+  );
 
-export default function PortfolioStats() {
+  const stats: StatDef[] = [
+    { title: "Projets actifs", value: String(projects.length), delta: "+5%", icon: Briefcase, gradient: "from-blue-500 to-indigo-500" },
+    { title: "Budget total", value: `${totalBudget.toLocaleString("fr-FR")} K €`, delta: "+5%", icon: Wallet, gradient: "from-orange-500 to-rose-500" },
+    { title: "Réussite", value: `${successRate}%`, delta: "+5%", icon: Target, gradient: "from-emerald-500 to-teal-500" },
+    { title: "Valeur générée", value: `${Math.round(generatedValue).toLocaleString("fr-FR")} K €`, delta: "+5%", icon: TrendingUp, gradient: "from-violet-500 to-fuchsia-500" },
+  ];
+
   return (
     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
       {stats.map((stat) => {

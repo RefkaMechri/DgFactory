@@ -1,5 +1,7 @@
-// ExecutiveStats.tsx
-import { executiveStats } from "@/data/executive";
+"use client";
+
+import { FolderKanban, Box, Wallet, TrendingUp, Smile, Clock } from "lucide-react";
+import { useProjects } from "./useProjects";
 
 const iconStyles: Record<string, string> = {
   blue: "bg-[#E4EEFC] text-[#3D6FC9]",
@@ -16,9 +18,79 @@ const barStyles: Record<string, string> = {
 };
 
 export default function ExecutiveStats() {
+  const { projects } = useProjects();
+
+  const total = projects.length;
+  const inProduction = projects.filter(
+    (p) => p.status === "En prod." || p.status === "Déploiement"
+  ).length;
+  const totalBudget = projects.reduce((sum, p) => sum + (Number(p.budget) || 0), 0);
+  const consumedBudget = projects.reduce(
+    (sum, p) => sum + ((Number(p.budget) || 0) * p.progress) / 100,
+    0
+  );
+  const consumedPct = totalBudget ? Math.round((consumedBudget / totalBudget) * 1000) / 10 : 0;
+  const avgProgress = total
+    ? Math.round((projects.reduce((sum, p) => sum + p.progress, 0) / total) * 10) / 10
+    : 0;
+  const squadCount = new Set(projects.map((p) => p.owner)).size;
+
+  // "Satisfaction Métier" et "Time-to-Market" n'ont pas d'équivalent dans les
+  // données projets — ils restent statiques faute de source pour les calculer.
+  const stats = [
+    {
+      label: "Projets Actifs",
+      value: String(total),
+      trend: "",
+      detail: `${squadCount} squads actives`,
+      icon: FolderKanban,
+      color: "blue",
+    },
+    {
+      label: "En Production",
+      value: String(inProduction),
+      trend: "",
+      detail: `sur ${total} projets`,
+      icon: Box,
+      color: "blue",
+    },
+    {
+      label: "Budget Consommé",
+      value: `${Math.round(consumedBudget).toLocaleString("fr-FR")} k €`,
+      trend: "",
+      detail: `${consumedPct}% du total`,
+      icon: Wallet,
+      color: "orange",
+    },
+    {
+      label: "Taux d'Avancement",
+      value: `${avgProgress}%`,
+      trend: "",
+      detail: "objectif 85%",
+      icon: TrendingUp,
+      color: "violet",
+    },
+    {
+      label: "Satisfaction Métier",
+      value: "4,3/5",
+      trend: "+0,3",
+      detail: "objectif 4,5/5",
+      icon: Smile,
+      color: "emerald",
+    },
+    {
+      label: "Time-to-Market",
+      value: "9,2 sem.",
+      trend: "-1,4",
+      detail: "objectif 8 semaines",
+      icon: Clock,
+      color: "orange",
+    },
+  ];
+
   return (
     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-6">
-      {executiveStats.map((stat) => {
+      {stats.map((stat) => {
         const Icon = stat.icon;
 
         return (
@@ -42,9 +114,11 @@ export default function ExecutiveStats() {
                   {stat.value}
                 </p>
 
-                <p className="mt-0.5 text-sm font-bold text-[#2F9C5E]">
-                  {stat.trend}
-                </p>
+                {stat.trend && (
+                  <p className="mt-0.5 text-sm font-bold text-[#2F9C5E]">
+                    {stat.trend}
+                  </p>
+                )}
 
                 <p className="text-xs font-medium text-slate-400">
                   {stat.detail}

@@ -1,4 +1,15 @@
-export const projects = [
+export interface Project {
+  id: number;
+  name: string;
+  category: string;
+  priority: string;
+  status: string;
+  budget: number;
+  progress: number;
+  owner: string;
+}
+
+export const projects: Project[] = [
   {
     id: 1,
     name: "Ouverture de compte 100% digitale",

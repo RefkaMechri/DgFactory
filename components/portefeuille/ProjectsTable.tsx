@@ -1,16 +1,38 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, MoreVertical } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight, MoreVertical, Trash2 } from "lucide-react";
 import { badgeClasses, progressColor } from "./theme";
-import { projects } from "@/data/projects";
+import type { Project } from "@/data/projects";
 
 const PAGE_SIZE = 5;
 
-export default function ProjectsTable() {
+interface ProjectsTableProps {
+  projects: Project[];
+  onDelete: (id: Project["id"]) => void;
+}
+
+export default function ProjectsTable({ projects, onDelete }: ProjectsTableProps) {
   const [page, setPage] = useState(1);
+  const [openMenuId, setOpenMenuId] = useState<Project["id"] | null>(null);
   const totalPages = Math.max(1, Math.ceil(projects.length / PAGE_SIZE));
-  const pageProjects = useMemo(() => projects.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE), [page]);
+
+  // Keep the current page valid after a project is deleted (e.g. deleting
+  // the last item on the last page).
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (page > totalPages) setPage(totalPages);
+  }, [page, totalPages]);
+
+  const pageProjects = useMemo(
+    () => projects.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [projects, page]
+  );
+
+  const handleDelete = (id: Project["id"]) => {
+    onDelete(id);
+    setOpenMenuId(null);
+  };
 
   return (
     <section className="overflow-hidden rounded-[20px] border border-[#E7E8F0] bg-white shadow-sm">
@@ -41,6 +63,13 @@ export default function ProjectsTable() {
           </thead>
 
           <tbody className="divide-y divide-[#EEF0F6]">
+            {pageProjects.length === 0 && (
+              <tr>
+                <td colSpan={9} className="px-3 py-8 text-center text-[11px] font-semibold text-[#A7ADBD]">
+                  Aucun projet
+                </td>
+              </tr>
+            )}
             {pageProjects.map((project) => (
               <tr key={project.id} className="transition hover:bg-[#FAFBFD]">
                 <td className="px-3 py-2.5 font-bold text-[#9AA1B2]">{project.id}</td>
@@ -64,10 +93,29 @@ export default function ProjectsTable() {
                   </div>
                 </td>
                 <td className="px-3 py-2.5 font-semibold text-[#70718A]">{project.owner}</td>
-                <td className="px-3 py-2.5">
-                  <button className="flex h-7 w-7 items-center justify-center rounded-full border border-[#E7E8F0] text-[#70718A] transition hover:border-[#FF6A45] hover:text-[#FF6A45]">
+                <td className="relative px-3 py-2.5">
+                  <button
+                    onClick={() => setOpenMenuId((cur) => (cur === project.id ? null : project.id))}
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-[#E7E8F0] text-[#70718A] transition hover:border-[#FF6A45] hover:text-[#FF6A45]"
+                  >
                     <MoreVertical size={13} />
                   </button>
+
+                  {openMenuId === project.id && (
+                    <>
+                      {/* Click-catcher to close the menu when clicking elsewhere */}
+                      <div className="fixed inset-0 z-10" onClick={() => setOpenMenuId(null)} />
+                      <div className="absolute right-3 top-9 z-20 w-36 overflow-hidden rounded-xl border border-[#E7E8F0] bg-white shadow-lg">
+                        <button
+                          onClick={() => handleDelete(project.id)}
+                          className="flex w-full items-center gap-2 px-3 py-2 text-left text-[11px] font-bold text-rose-500 hover:bg-rose-50"
+                        >
+                          <Trash2 size={13} />
+                          Supprimer
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}
@@ -76,7 +124,11 @@ export default function ProjectsTable() {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#EEF0F6] px-4 py-3 text-[11px] font-semibold text-[#8A91A3]">
-        <span>Affichage {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, projects.length)} sur {projects.length}</span>
+        <span>
+          {projects.length === 0
+            ? "Aucun projet"
+            : `Affichage ${(page - 1) * PAGE_SIZE + 1}–${Math.min(page * PAGE_SIZE, projects.length)} sur ${projects.length}`}
+        </span>
         <div className="flex items-center gap-1">
           <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#E7E8F0] disabled:opacity-40">
             <ChevronLeft size={13} />
