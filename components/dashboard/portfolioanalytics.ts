@@ -19,6 +19,17 @@ export interface SliceDatum {
   color: string;
 }
 
+const chartPalette = [
+  "#3b82f6",
+  "#10b981",
+  "#f59e0b",
+  "#ef4444",
+  "#8b5cf6",
+  "#14b8a6",
+  "#f97316",
+  "#6366f1",
+];
+
 // Groups projects by domain (project.category) and returns counts per domain.
 export function getDomainDistribution(projects: PortfolioProject[]): SliceDatum[] {
   const counts = new Map<string, number>();
